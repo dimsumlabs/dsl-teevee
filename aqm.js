@@ -1,3 +1,25 @@
+Date.prototype.toIsoString = function() {
+  var tzo = -this.getTimezoneOffset(),
+    dif = tzo >= 0 ? '+' : '-',
+    pad = function(num) {
+      var norm = Math.floor(Math.abs(num));
+      return (norm < 10 ? '0' : '') + norm;
+    };
+  return this.getFullYear() +
+    '-' + pad(this.getMonth() + 1) +
+    '-' + pad(this.getDate()) +
+    'T' + pad(this.getHours()) +
+    ':' + pad(this.getMinutes()) +
+    ':' + pad(this.getSeconds()) +
+    dif + pad(tzo / 60) +
+    ':' + pad(tzo % 60);
+}
+
+function convertToHKT(updatedAt) {
+  var dt = new Date(Date.parse(updatedAt));
+  return (dt.toIsoString());
+}
+
 function updateValues(json) {
   $.each(json.sensors, function(i, val) {
     switch (val.title) {
@@ -31,7 +53,7 @@ function getAqmData() {
   })
   .done(function(json) {
     $("#timestamp").addClass("okay");
-    $("#timestamp").html(json.updatedAt);
+    $("#timestamp").html(convertToHKT(json.updatedAt));
     updateValues(json);
   })
 }
