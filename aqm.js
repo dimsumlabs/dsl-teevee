@@ -31,7 +31,8 @@ function getAqmData() {
   })
   .done(function(json) {
     $("#timestamp").addClass("okay");
-    $("#timestamp").text(new Date(json.updatedAt).toLocaleString());
+    $("#timestamp").text(new Date(json.updatedAt).
+                         toLocaleString("en-SE"));
     updateValues(json);
   })
 }
