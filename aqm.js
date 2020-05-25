@@ -1,19 +1,3 @@
-function convertDateToHKT(updatedAt) {
-  const date = new Date(Date.parse(updatedAt));
-
-  /*
-   * This is a lot more fiddly than it needs to be.  For whatever reason,
-   * JavaScript doesn't have a strftime(3) standard library function.
-   *
-   * The "en-SE" locale was determined by experiment to be the one that
-   * produces ISO 8601 "YYYY-MM-DD" and "HH:MM:SS" strings.
-   */
-
-  return (date.toLocaleDateString("en-SE", { timezone: "Asia/Hong_Kong" }) +
-    "T" + date.toLocaleTimeString("en-SE", { timeZone: "Asia/Hong_Kong" }) +
-    "+08:00");
-}
-
 function updateValues(json) {
   $.each(json.sensors, function(i, val) {
     switch (val.title) {
@@ -47,7 +31,7 @@ function getAqmData() {
   })
   .done(function(json) {
     $("#timestamp").addClass("okay");
-    $("#timestamp").html(convertDateToHKT(json.updatedAt));
+    $("#timestamp").html(json.updatedAt);
     updateValues(json);
   })
 }
