@@ -16,6 +16,7 @@
 	<body>
 		<div class="reveal">
 			<div class="slides">
+                                <section data-background-iframe="https://dimsumlabs.github.io/dsl-accounts/"></section>
 				<section data-background="images/welcome-to-dsl.png" data-background-size="contain" data-background-color="#000000"></section>
 				<section data-background="images/tidy-up.png" data-background-size="contain" data-background-color="#000000"></section>
 			</div>
@@ -30,12 +31,11 @@
 			// - https://revealjs.com/initialization/
 			// - https://revealjs.com/config/
 			Reveal.initialize({
-				hash: true,
-                                autoSlide: 5000,
+                                autoSlide: 10000,
+                                autoSlideStoppable: false,
+                                controls: false,
                                 loop: true,
-
-				// Learn about plugins: https://revealjs.com/plugins/
-				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes ]
+                                progress: false
 			});
 		</script>
 	</body>
