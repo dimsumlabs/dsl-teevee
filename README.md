@@ -1,3 +1,3 @@
-This repository contains what is running on the big TV: [Hello][1]
+This repository contains the presentation on our big TV: [Hello][1]
 
 [1]: https://github.com/dimsumlabs/dsl-meta/wiki/Hello
