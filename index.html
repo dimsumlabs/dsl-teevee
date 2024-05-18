@@ -20,11 +20,14 @@
   <body>
     <div class="reveal">
       <div class="slides">
-        <section data-background="images/welcome-to-dsl.png"
+        <section data-state="short"
+                 data-background="images/welcome-to-dsl.png"
                  data-background-size="contain"
                  data-background-color="black"></section>
-        <section data-background-iframe="https://dimsumlabs.github.io/dsl-accounts/"></section>
-        <section data-background="images/tidy-up.png"
+        <section data-state="long"
+                 data-background-iframe="https://dimsumlabs.github.io/dsl-accounts/"></section>
+        <section data-state="short"
+                 data-background="images/tidy-up.png"
                  data-background-size="contain"
                  data-background-color="black"></section>
       </div>
@@ -33,12 +36,17 @@
     <script src="3rd-party/reveal.js/dist/reveal.js"></script>
     <script>
       Reveal.initialize({
-          autoSlide: 10000,
           autoSlideStoppable: false,
           controls: false,
           loop: true,
           progress: false
       });
+      Reveal.addEventListener("short", function() {
+          Reveal.configure({autoSlide: 10000});
+      }, false );
+      Reveal.addEventListener("long", function() {
+          Reveal.configure({autoSlide: 20000});
+      }, false );
     </script>
   </body>
 </html>
